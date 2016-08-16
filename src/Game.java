@@ -8,15 +8,14 @@ public class Game {
     	int guessCounter = 0;
     	int guess;
     	String name;
+    	BufferedReader mInput = new BufferedReader(new InputStreamReader(System.in));
     	
     	System.out.printf("ADMINISTRATOR SETUP%n" + "-------------------%n");
     	System.out.println("What is the name of the item that will go in the jar?");
-    	BufferedReader brN = new BufferedReader(new InputStreamReader(System.in));
-    	name = brN.readLine();
+    	name = mInput.readLine();
     	
     	System.out.printf("What is the maximum number of %ss that can go in the jar?%n", name);
-    	BufferedReader brM = new BufferedReader(new InputStreamReader(System.in));
-    	int max = Integer.parseInt(brM.readLine());
+    	int max = Integer.parseInt(mInput.readLine());
     	
         Jar jar = new Jar(name, max);       
         correctNum = jar.fill();
@@ -26,8 +25,7 @@ public class Game {
 				+ "%nPick a number between 1 and %d.%n", name, jar.getMax());
         
         do {
-        	BufferedReader brG = new BufferedReader(new InputStreamReader(System.in));
-        	guess = Integer.parseInt(brG.readLine());
+        	guess = Integer.parseInt(mInput.readLine());
         	guessCounter++;
         	if (guess > correctNum) {
         		System.out.printf("%d is too high.%n", guess);
